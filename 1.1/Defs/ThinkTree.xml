@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+<Defs>
+
+  <ThinkTreeDef>
+    <defName>Autocleaner</defName>
+    <thinkRoot Class="ThinkNode_Priority">
+      <subNodes>
+        <!-- Downed -->
+        <li Class="ThinkNode_Subtree">
+          <treeDef>Downed</treeDef>
+        </li>
+        
+        <li Class="Autocleaner.JobGiverAutocleaner"/>
+        
+        <li Class="Autocleaner.JobGiverGotoCorner"/>
+        
+        <li Class="Autocleaner.JobGiverCharge"/>
+        
+        <li Class="Autocleaner.JobGiverWaitForRepair"/>
+        
+        <!-- Idle -->
+        <li Class="JobGiver_Idle">
+            <ticks>600</ticks>
+        </li>
+        
+        <!-- Idle error -->
+        <li Class="JobGiver_IdleError"/>
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+  
+</Defs>

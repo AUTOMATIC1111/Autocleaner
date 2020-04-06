@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <SoundDef Abstract="True" Name="GunplaySound">
+  </SoundDef>
+  
+  <SoundDef Abstract="True" Name="GunplayProjectileHitSound">
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+  </SoundDef>
+  
+  <SoundDef ParentName="GunplaySound">
+    <defName>GunplayMinigunSpinup</defName>  
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Gunplay/MinigunSpinup</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>9~9</volumeRange>
+        <pitchRange>0.93~1.07</pitchRange>
+        <sustainAttack>0.5</sustainAttack>
+        <sustainRelease>0.5</sustainRelease>
+        <muteWhenPaused>True</muteWhenPaused>
+      </li>
+    </subSounds>
+    
+    <priorityMode>PrioritizeNearest</priorityMode>
+    <sustain>True</sustain>
+  </SoundDef>
+  
+  <SoundDef ParentName="GunplaySound">
+    <defName>GunplayGreatbowDraw</defName>  
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Gunplay/GreatbowDraw</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>12~13</volumeRange>
+        <pitchRange>0.93~1.07</pitchRange>
+        <sustainAttack>0.1</sustainAttack>
+        <sustainRelease>0.1</sustainRelease>
+        <muteWhenPaused>True</muteWhenPaused>
+      </li>
+    </subSounds>
+    
+    <priorityMode>PrioritizeNearest</priorityMode>
+    <sustain>True</sustain>
+  </SoundDef>
+
+  <SoundDef ParentName="GunplaySound">
+    <defName>GunplayGreatbowRelease</defName>  
+    <context>MapOnly</context>
+    <maxSimultaneous>4</maxSimultaneous>
+    
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Gunplay/GreatbowRelease</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>40~50</volumeRange>
+        <pitchRange>0.93~1.07</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  
+  <SoundDef ParentName="GunplayProjectileHitSound">
+    <defName>GunplayArrowFabric</defName>  
+    <subSounds><li>
+        <grains><li Class="AudioGrain_Folder"><clipFolderPath>Gunplay/Arrow/Fabric</clipFolderPath></li></grains>
+        <volumeRange>40~50</volumeRange> <pitchRange>0.93~1.07</pitchRange>
+    </li></subSounds>
+  </SoundDef>
+  
+  <SoundDef ParentName="GunplayProjectileHitSound">
+    <defName>GunplayArrowFlesh</defName>  
+    <subSounds><li>
+        <grains><li Class="AudioGrain_Folder"><clipFolderPath>Gunplay/Arrow/Flesh</clipFolderPath></li></grains>
+        <volumeRange>40~50</volumeRange> <pitchRange>0.93~1.07</pitchRange>
+    </li></subSounds>
+  </SoundDef>
+  
+  <SoundDef ParentName="GunplayProjectileHitSound">
+    <defName>GunplayArrowMetal</defName>  
+    <subSounds><li>
+        <grains><li Class="AudioGrain_Folder"><clipFolderPath>Gunplay/Arrow/Metal</clipFolderPath></li></grains>
+        <volumeRange>40~50</volumeRange> <pitchRange>0.93~1.07</pitchRange>
+    </li></subSounds>
+  </SoundDef>
+  
+  <SoundDef ParentName="GunplayProjectileHitSound">
+    <defName>GunplayArrowSoil</defName>  
+    <subSounds><li>
+        <grains><li Class="AudioGrain_Folder"><clipFolderPath>Gunplay/Arrow/Soil</clipFolderPath></li></grains>
+        <volumeRange>40~50</volumeRange> <pitchRange>0.93~1.07</pitchRange>
+    </li></subSounds>
+  </SoundDef>
+  
+  <SoundDef ParentName="GunplayProjectileHitSound">
+    <defName>GunplayArrowStone</defName>  
+    <subSounds><li>
+        <grains><li Class="AudioGrain_Folder"><clipFolderPath>Gunplay/Arrow/Stone</clipFolderPath></li></grains>
+        <volumeRange>40~50</volumeRange> <pitchRange>0.7~1.3</pitchRange>
+    </li></subSounds>
+  </SoundDef>
+  
+  <SoundDef ParentName="GunplayProjectileHitSound">
+    <defName>GunplayArrowWood</defName>  
+    <subSounds><li>
+        <grains><li Class="AudioGrain_Folder"><clipFolderPath>Gunplay/Arrow/Wood/</clipFolderPath></li></grains>
+        <volumeRange>40~50</volumeRange> <pitchRange>0.93~1.07</pitchRange>
+    </li></subSounds>
+  </SoundDef>
+
+</Defs>

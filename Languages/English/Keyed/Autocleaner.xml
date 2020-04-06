@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <AutocleanerTitle>Autocleaner</AutocleanerTitle>
+  
+  <AutocleanerActivate>Activate</AutocleanerActivate>
+  <AutocleanerActivateDesc>Start up the autocleaner and make it automatically clean areas that have power.</AutocleanerActivateDesc>
+  <AutocleanerDeactivate>Deactivate</AutocleanerDeactivate>
+  <AutocleanerDeactivateDesc>Stop the autocleaner and turn it into a haulable item.</AutocleanerDeactivateDesc>
+  
+  <AutocleanerPause>Pause</AutocleanerPause>
+  <AutocleanerPauseDesc>Halt cleaning and stop in place.</AutocleanerPauseDesc>
+  <AutocleanerResume>Resume</AutocleanerResume>
+  <AutocleanerResumeDesc>Resume cleaning.</AutocleanerResumeDesc>
+  
+  <AutocleanerCharge>Charge: </AutocleanerCharge>
+
+  <AutocleanerNotStationary>not stationary</AutocleanerNotStationary>
+</LanguageData>
