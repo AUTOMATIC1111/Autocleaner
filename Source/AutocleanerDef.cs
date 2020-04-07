@@ -11,5 +11,6 @@ namespace Autocleaner
     {
         public float charge = 100f;
         public int dischargePeriodTicks = 30;
+        public ThingDef charger;
     }
 }

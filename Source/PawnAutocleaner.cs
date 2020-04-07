@@ -22,6 +22,7 @@ namespace Autocleaner
 
         public bool Broken => health.hediffSet.hediffs.Count > 0;
         public bool LowPower => charge < AutoDef.charge * lowLower;
+        public Thing charger = null;
 
         public PawnAutocleaner()
         {
@@ -42,6 +43,21 @@ namespace Autocleaner
             base.PostApplyDamage(dinfo, totalDamageDealt);
 
             jobs.StopAll(false, true);
+        }
+
+        public void StartCharging()
+        {
+            StopCharging();
+
+            charger = GenSpawn.Spawn(AutoDef.charger, Position, Map);       
+        }
+
+        public void StopCharging()
+        {
+            if (charger == null) return;
+
+            charger.Destroy();
+            charger = null;
         }
 
         public override void Tick()
@@ -130,12 +146,10 @@ namespace Autocleaner
             base.Draw();
 
             CompPowerTrader comp = this.TryGetComp<CompPowerTrader>();
-            if (comp == null) return;
-
             OverlayTypes overlay = OverlayTypes.Forbidden;
 
             if (Broken) overlay = OverlayTypes.BrokenDown;
-            else if(comp.PowerOn && CurJobDef == Globals.AutocleanerCharge) overlay = OverlayTypes.NeedsPower;
+            else if (charger != null && CurJobDef == Globals.AutocleanerCharge) overlay = OverlayTypes.NeedsPower;
             else if (LowPower) overlay = OverlayTypes.PowerOff;
 
             if (overlay != OverlayTypes.Forbidden) Map.overlayDrawer.DrawOverlay(this, overlay);

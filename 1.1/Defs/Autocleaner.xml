@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+  <ThingDef>
+    <defName>AutocleanerCharger</defName>
+    <thingClass>ThingWithComps</thingClass>
+    <label>autocleaner charger</label>
+    <description>A device autocleaner uses to charge from power network.</description>
+    <category>Mote</category>
+    <selectable>false</selectable>
+    <altitudeLayer>Conduits</altitudeLayer>
+    <passability>Standable</passability>
+    <tickerType>Normal</tickerType>
+    <useHitPoints>false</useHitPoints>
+    <isSaveable>false</isSaveable>
+    <rotatable>false</rotatable>
+    <drawerType>None</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>50</basePowerConsumption>
+      </li>
+    </comps>
+  </ThingDef>
+
   <ThingDef ParentName="BasePawn" Name="BaseAutocleaner" Abstract="True">
     <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
     <statBases>
@@ -68,14 +92,8 @@
       <Plasteel>10</Plasteel>
       <ComponentIndustrial>2</ComponentIndustrial>
     </butcherProducts>
-    <comps>
-      <li Class="CompProperties_Power">
-        <compClass>Autocleaner.CompAutocleanerPowerTrader</compClass>
-        <basePowerConsumption>50</basePowerConsumption>
-        <transmitsPower>false</transmitsPower>
-      </li>
-    </comps>
     <repairEffect>Repair</repairEffect>
+    <charger>AutocleanerCharger</charger>
   </ThingDef>
 
   <PawnKindDef>

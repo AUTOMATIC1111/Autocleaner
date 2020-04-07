@@ -19,32 +19,37 @@ namespace Autocleaner
 
         PawnAutocleaner cleaner => pawn as PawnAutocleaner;
         AutocleanerJobDef def => job.def as AutocleanerJobDef;
-        CompPowerTrader compReceiver => pawn.TryGetComp<CompPowerTrader>();
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            if (cleaner == null || def == null || compReceiver == null || Map == null || Map.powerNetManager == null)
+            if (cleaner == null || def == null || Map == null || Map.powerNetManager == null)
             {
                 EndJobWith(JobCondition.Incompletable);
                 yield break;
             }
-            Map.powerNetManager.Notify_ConnectorWantsConnect(compReceiver);
+            
             int ticksWaitedForPower = 0;
-
             yield return new Toil()
             {
                 initAction = delegate ()
                 {
                     Map.pawnDestinationReservationManager.Reserve(pawn, job, pawn.Position);
                     pawn.pather.StopDead();
+
+                    cleaner.StartCharging();
                 },
                 tickAction = delegate ()
                 {
-                    if (!compReceiver.PowerOn)
+                    if (cleaner.charger == null)
+                    {
+                        EndJobWith(JobCondition.Incompletable);
+                        return;
+                    }
+                    CompPowerTrader comp = cleaner.charger.TryGetComp<CompPowerTrader>();
+                    if (comp == null || !comp.PowerOn)
                     {
                         if(ticksWaitedForPower++ > 60)
                             EndJobWith(JobCondition.Incompletable);
-
                         return;
                     }
 
@@ -57,7 +62,7 @@ namespace Autocleaner
                     }
                 },
                 finishActions = new List<Action>() { delegate () {
-                    PowerConnectionMaker.DisconnectFromPowerNet(compReceiver);
+                    cleaner.StopCharging();
                 } },
                 defaultCompleteMode = ToilCompleteMode.Never,
             };
