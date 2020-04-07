@@ -33,37 +33,37 @@
         <li>
            <def>AutocleanerWheel</def>
            <customLabel>front left wheel</customLabel>
-           <coverage>0.5</coverage>
+           <coverage>0.075</coverage>
         </li>
         <li>
            <def>AutocleanerWheel</def>
            <customLabel>front right wheel</customLabel>
-           <coverage>0.5</coverage>
+           <coverage>0.075</coverage>
         </li>
         <li>
            <def>AutocleanerWheel</def>
            <customLabel>front left wheel</customLabel>
-           <coverage>0.5</coverage>
+           <coverage>0.075</coverage>
         </li>
         <li>
            <def>AutocleanerWheel</def>
            <customLabel>rear right wheel</customLabel>
-           <coverage>0.5</coverage>
+           <coverage>0.075</coverage>
         </li>
         <li>
           <def>Reactor</def>
           <customLabel>core</customLabel>
-          <coverage>0.06</coverage>
+          <coverage>0.025</coverage>
           <depth>Inside</depth>
         </li>
         <li>
           <def>FluidReprocessor</def>
-          <coverage>0.04</coverage>
+          <coverage>0.025</coverage>
           <depth>Inside</depth>
         </li>
         <li>
           <def>FluidReprocessor</def>
-          <coverage>0.04</coverage>
+          <coverage>0.025</coverage>
           <depth>Inside</depth>
         </li>
       </parts>
