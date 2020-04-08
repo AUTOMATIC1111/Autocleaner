@@ -42,6 +42,7 @@ namespace Autocleaner
             if (!cleaner.active) return null;
 
             Map map = pawn.Map;
+            if (map == null) return null;
             if (SuitablePosition(pawn.Position, map)) return null;
 
             IntVec3 target;
