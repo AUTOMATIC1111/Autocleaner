@@ -30,7 +30,7 @@ namespace Autocleaner
             }
 
             CompPower comp = PowerConnectionMaker.BestTransmitterForConnector(pos, map);
-            if (comp.PowerNet == null) return false;
+            if (comp?.PowerNet == null) return false;
 
             return comp.PowerNet.hasPowerSource;
         }
@@ -45,17 +45,46 @@ namespace Autocleaner
             if (map == null) return null;
             if (SuitablePosition(pawn.Position, map)) return null;
 
-            IntVec3 target;
-            if (!RCellFinder.TryFindRandomCellNearWith(pawn.Position, x => SuitablePosition(x, map) && pawn.CanReach(x, PathEndMode.OnCell, Danger.Deadly), pawn.Map, out target))
+            IntVec3 target = IntVec3.Invalid;
+            PathGrid pathGrid = map.pathGrid;
+            CellIndices cellIndices = map.cellIndices;
+            Predicate<IntVec3> passCheck = delegate (IntVec3 c)
             {
-                if (!RCellFinder.TryFindRandomCellNearWith(pawn.Position, x => SuitablePosition(x, map, true) && pawn.CanReach(x, PathEndMode.OnCell, Danger.Deadly), pawn.Map, out target))
-                {
-                    return null;
-                }
+                if (c.GetTerrain(map).IsWater) return false;
+                if (!pathGrid.WalkableFast(cellIndices.CellToIndex(c))) return false;
+
+                return true;
+            };
+            Func<IntVec3, bool> processor = delegate (IntVec3 x)
+            {
+                if (!SuitablePosition(x, map)) return false;
+
+                target = x;
+                return true;
+            };
+
+            map.floodFiller.FloodFill(pawn.Position, passCheck, processor);
+            if (target != IntVec3.Invalid)
+            {
+                Job job = JobMaker.MakeJob(Globals.AutocleanerGoto, target);
+                return job;
             }
 
-            Job job = JobMaker.MakeJob(Globals.AutocleanerGoto, target);
-            return job;
+            Func<IntVec3, bool> processorFallback = delegate (IntVec3 x)
+            {
+                if (!SuitablePosition(x, map, true)) return false;
+
+                target = x;
+                return true;
+            };
+            map.floodFiller.FloodFill(pawn.Position, passCheck, processor);
+            if (target != IntVec3.Invalid)
+            {
+                Job job = JobMaker.MakeJob(Globals.AutocleanerGoto, target);
+                return job;
+            }
+
+            return null;
         }
     }
 }
