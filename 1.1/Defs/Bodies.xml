@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+  <FleshTypeDef>
+    <defName>AutocleanerMechanoid</defName>
+    <corpseCategory>CorpsesMechanoid</corpseCategory>
+    <damageEffecter>Damage_HitMechanoid</damageEffecter>
+    <wounds>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechA</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechB</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechC</texture>
+      </li>
+    </wounds>
+  </FleshTypeDef>
+
   <BodyPartDef>
     <defName>AutocleanerWheel</defName>
     <label>wheel</label>
@@ -22,6 +39,7 @@
     <label>autocleaner</label>
     <corePart>
       <def>MechanicalThoraxCanManipulate</def>
+      <customLabel>shell</customLabel>
       <height>Middle</height>
       <depth>Outside</depth>
       

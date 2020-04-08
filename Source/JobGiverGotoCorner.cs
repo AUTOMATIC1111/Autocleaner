@@ -30,7 +30,9 @@ namespace Autocleaner
             }
 
             CompPower comp = PowerConnectionMaker.BestTransmitterForConnector(pos, map);
-            return comp != null;
+            if (comp.PowerNet == null) return false;
+
+            return comp.PowerNet.hasPowerSource;
         }
 
         protected override Job TryGiveJob(Pawn pawn)

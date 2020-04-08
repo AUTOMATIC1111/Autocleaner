@@ -3,7 +3,7 @@
 
   <ThingDef>
     <defName>AutocleanerCharger</defName>
-    <thingClass>ThingWithComps</thingClass>
+    <thingClass>Building</thingClass>
     <label>autocleaner charger</label>
     <description>A device autocleaner uses to charge from power network.</description>
     <category>Mote</category>
@@ -17,10 +17,19 @@
     <drawerType>None</drawerType>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 
+    <building>
+        <expandHomeArea>false</expandHomeArea>
+        <isInert>true</isInert>
+        <deconstructible>false</deconstructible>
+        <claimable>false</claimable>
+    </building>
+
     <comps>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>50</basePowerConsumption>
+        <soundPowerOff>AutocleanerNoSound</soundPowerOff>
+        <soundPowerOn>AutocleanerNoSound</soundPowerOn>
       </li>
     </comps>
   </ThingDef>
@@ -38,7 +47,7 @@
     </statBases>
     <receivesSignals>true</receivesSignals>
     <race>
-      <fleshType>Mechanoid</fleshType>
+      <fleshType>AutocleanerMechanoid</fleshType>
       <needsRest>false</needsRest>
       <hasGenders>false</hasGenders>
       <foodType>None</foodType>
@@ -59,7 +68,7 @@
     
     <tools>
       <li>
-        <label>carcass</label>
+        <label>shell</label>
         <capacities>
           <li>Blunt</li>
         </capacities>

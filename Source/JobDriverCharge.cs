@@ -13,8 +13,7 @@ namespace Autocleaner
     {
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            CompPower comp = PowerConnectionMaker.BestTransmitterForConnector(pawn.Position, pawn.Map);
-            return comp != null;
+            return true;
         }
 
         PawnAutocleaner cleaner => pawn as PawnAutocleaner;
@@ -27,7 +26,7 @@ namespace Autocleaner
                 EndJobWith(JobCondition.Incompletable);
                 yield break;
             }
-            
+
             int ticksWaitedForPower = 0;
             yield return new Toil()
             {
@@ -45,10 +44,11 @@ namespace Autocleaner
                         EndJobWith(JobCondition.Incompletable);
                         return;
                     }
+
                     CompPowerTrader comp = cleaner.charger.TryGetComp<CompPowerTrader>();
                     if (comp == null || !comp.PowerOn)
                     {
-                        if(ticksWaitedForPower++ > 60)
+                        if(ticksWaitedForPower++ > 20)
                             EndJobWith(JobCondition.Incompletable);
                         return;
                     }

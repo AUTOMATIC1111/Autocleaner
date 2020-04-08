@@ -56,7 +56,7 @@ namespace Autocleaner
         {
             if (charger == null) return;
 
-            charger.Destroy();
+            if(charger.Spawned) charger.Destroy();
             charger = null;
         }
 
@@ -141,11 +141,21 @@ namespace Autocleaner
             yield break;
         }
 
+        public override string GetInspectString()
+        {
+            if (charger == null) return base.GetInspectString();
+
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(base.GetInspectString());
+            if (stringBuilder.Length > 0) stringBuilder.AppendLine();
+            stringBuilder.Append(charger.GetInspectString());
+            return stringBuilder.ToString();
+        }
+
         public override void Draw()
         {
             base.Draw();
 
-            CompPowerTrader comp = this.TryGetComp<CompPowerTrader>();
             OverlayTypes overlay = OverlayTypes.Forbidden;
 
             if (Broken) overlay = OverlayTypes.BrokenDown;
