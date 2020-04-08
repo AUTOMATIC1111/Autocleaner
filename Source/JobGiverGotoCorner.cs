@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,16 +36,8 @@ namespace Autocleaner
             return comp.PowerNet.HasActivePowerSource;
         }
 
-        protected override Job TryGiveJob(Pawn pawn)
+        IntVec3 FindSuitablePosition(Pawn pawn, Map map, IntVec3 pos)
         {
-            PawnAutocleaner cleaner = pawn as PawnAutocleaner;
-            if (cleaner == null) return null;
-            if (!cleaner.active) return null;
-
-            Map map = pawn.Map;
-            if (map == null) return null;
-            if (SuitablePosition(pawn.Position, map)) return null;
-
             IntVec3 target = IntVec3.Invalid;
             PathGrid pathGrid = map.pathGrid;
             CellIndices cellIndices = map.cellIndices;
@@ -63,21 +56,36 @@ namespace Autocleaner
                 return true;
             };
 
-            map.floodFiller.FloodFill(pawn.Position, passCheck, processor);
-            if (target != IntVec3.Invalid)
+            map.floodFiller.FloodFill(pos, passCheck, processor, 3000);
+            if (target != IntVec3.Invalid) return target;
+
+            return FindSuitablePositionRandom(pawn, map, pos);
+        }
+
+        IntVec3 FindSuitablePositionRandom(Pawn pawn, Map map, IntVec3 pos)
+        {
+            IntVec3 target;
+            if (!RCellFinder.TryFindRandomCellNearWith(pos, x => SuitablePosition(x, map) && pawn.CanReach(x, PathEndMode.OnCell, Danger.Deadly), map, out target))
             {
-                Job job = JobMaker.MakeJob(Globals.AutocleanerGoto, target);
-                return job;
+                if (!RCellFinder.TryFindRandomCellNearWith(pos, x => SuitablePosition(x, map, true) && pawn.CanReach(x, PathEndMode.OnCell, Danger.Deadly), map, out target))
+                {
+                    return IntVec3.Invalid; ;
+                }
             }
 
-            Func<IntVec3, bool> processorFallback = delegate (IntVec3 x)
-            {
-                if (!SuitablePosition(x, map, true)) return false;
+            return target;
+        }
+        protected override Job TryGiveJob(Pawn pawn)
+        {
+            PawnAutocleaner cleaner = pawn as PawnAutocleaner;
+            if (cleaner == null) return null;
+            if (!cleaner.active) return null;
 
-                target = x;
-                return true;
-            };
-            map.floodFiller.FloodFill(pawn.Position, passCheck, processor);
+            Map map = pawn.Map;
+            if (map == null) return null;
+            if (SuitablePosition(pawn.Position, map)) return null;
+
+            IntVec3 target = Autocleaner.settings.lowQualityPathing ? FindSuitablePositionRandom(pawn, map, pawn.Position) : FindSuitablePosition(pawn, map, pawn.Position);
             if (target != IntVec3.Invalid)
             {
                 Job job = JobMaker.MakeJob(Globals.AutocleanerGoto, target);

@@ -10,19 +10,18 @@ namespace Autocleaner
 {
     public class AutocleanerSettings : ModSettings
     {
-        public bool enable = true;
-
+        public bool lowQualityPathing = false;
 
         override public void ExposeData()
         {
-            Scribe_Values.Look(ref enable, "enable");
+            Scribe_Values.Look(ref lowQualityPathing, "lowQualityPathing", false);
         }
 
         public void DoSettingsWindowContents(Rect inRect)
         {
             Listing_Standard listing_Standard = new Listing_Standard();
             listing_Standard.Begin(inRect);
-            listing_Standard.CheckboxLabeled("AutocleanerEnableName".Translate(), ref enable, "AutocleanerEnableDesc".Translate());
+            listing_Standard.CheckboxLabeled("AutocleanerLQPathingName".Translate(), ref lowQualityPathing, "AutocleanerLQPathingDesc".Translate());
             listing_Standard.End();
         }
     }
