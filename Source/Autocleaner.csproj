@@ -344,6 +344,8 @@
     <Compile Include="JobGiverGotoCorner.cs" />
     <Compile Include="JobGiverWaitForRepair.cs" />
     <Compile Include="Patch\PatchGenAI.cs" />
+    <Compile Include="Patch\PatchPawn_PlayerSettings.cs" />
+    <Compile Include="Patch\PatchRaceProperties.cs" />
     <Compile Include="PawnAutocleaner.cs" />
     <Compile Include="WorkGiverCleanFilth.cs" />
     <Compile Include="WorkGiverRepairAutocleaner.cs" />

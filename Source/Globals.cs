@@ -24,5 +24,6 @@ namespace Autocleaner
 
         public static PawnKindDef AutocleanerPawnKind;
 
+        public static FleshTypeDef AutocleanerMechanoid;
     }
 }

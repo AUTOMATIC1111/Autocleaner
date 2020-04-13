@@ -17,6 +17,9 @@ namespace Autocleaner
         public Autocleaner(ModContentPack pack) : base(pack)
         {
             settings = GetSettings<AutocleanerSettings>();
+
+            var harmony = new Harmony("com.github.automatic1111.autocleaner");
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
@@ -28,16 +31,6 @@ namespace Autocleaner
         public override string SettingsCategory()
         {
             return "AutocleanerTitle".Translate();
-        }
-    }
-
-    [StaticConstructorOnStartup]
-    public class AutocleanerSetup
-    {
-        static AutocleanerSetup()
-        {
-            var harmony = new Harmony("com.github.automatic1111.autocleaner");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
     }
 

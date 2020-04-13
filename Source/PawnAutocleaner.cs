@@ -42,7 +42,7 @@ namespace Autocleaner
         {
             base.PostApplyDamage(dinfo, totalDamageDealt);
 
-            jobs.StopAll(false, true);
+            if(jobs!=null) jobs.StopAll(false, true);
         }
 
         public void StartCharging()

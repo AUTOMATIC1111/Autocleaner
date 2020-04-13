@@ -54,6 +54,12 @@ namespace Autocleaner
                 if (cleaner != null && def != null)
                 {
                     cleaner.charge -= def.activeDischargePerSecond / cleaner.AutoDef.dischargePeriodTicks;
+
+                    if (cleaner.LowPower)
+                    {
+                        EndJobWith(JobCondition.Incompletable);
+                        return;
+                    }
                 }
 
                 if (cleaningWorkDone > filth.def.filth.cleaningWorkToReduceThickness)
@@ -69,7 +75,6 @@ namespace Autocleaner
                 }
             };
             clean.defaultCompleteMode = ToilCompleteMode.Never;
-            //            clean.WithEffect(EffecterDefOf.Clean, TargetIndex.A);
             clean.WithProgressBar(TargetIndex.A, () => totalCleaningWorkDone / totalCleaningWorkRequired, true, -0.5f);
             clean.PlaySustainerOrSound(() => SoundDefOf.Interact_CleanFilth);
             clean.JumpIfDespawnedOrNullOrForbidden(TargetIndex.A, initExtractTargetFromQueue);

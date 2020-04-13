@@ -23,7 +23,8 @@ namespace Autocleaner
             if (scanner == null) return null;
 
             IEnumerable<Thing> enumerable = scanner.PotentialWorkThingsGlobal(pawn).Where(x => scanner.HasJobOnThing(pawn, x));
-            Thing thing = GenClosest.ClosestThing_Global_Reachable(pawn.Position, pawn.Map, enumerable, scanner.PathEndMode, TraverseParms.For(pawn, Danger.Deadly, TraverseMode.ByPawn, false), 9999f);
+            Danger maxDanger = (pawn.playerSettings != null && pawn.playerSettings.UsesConfigurableHostilityResponse && pawn.playerSettings.hostilityResponse != HostilityResponseMode.Flee) ? Danger.Deadly : Danger.None;
+            Thing thing = GenClosest.ClosestThing_Global_Reachable(pawn.Position, pawn.Map, enumerable, scanner.PathEndMode, TraverseParms.For(pawn, maxDanger, TraverseMode.ByPawn, false), 9999f);
             if (thing == null) return null;
 
             Job job = scanner.JobOnThing(pawn, thing, false);

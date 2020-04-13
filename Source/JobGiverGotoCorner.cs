@@ -69,7 +69,7 @@ namespace Autocleaner
             {
                 if (!RCellFinder.TryFindRandomCellNearWith(pos, x => SuitablePosition(x, map, true) && pawn.CanReach(x, PathEndMode.OnCell, Danger.Deadly), map, out target))
                 {
-                    return IntVec3.Invalid; ;
+                    return IntVec3.Invalid;
                 }
             }
 
