@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <FleshTypeDef>
+    <defName>AutocleanerMechanoid</defName>
+    <corpseCategory>CorpsesMechanoid</corpseCategory>
+    <damageEffecter>Damage_HitMechanoid</damageEffecter>
+    <wounds>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechA</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechB</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechC</texture>
+      </li>
+    </wounds>
+  </FleshTypeDef>
+
+  <BodyPartDef>
+    <defName>AutocleanerWheel</defName>
+    <label>wheel</label>
+    <hitPoints>50</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>MovingLimbCore</li>
+      <li>MovingLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyDef>
+    <defName>Autocleaner</defName>
+    <label>autocleaner</label>
+    <corePart>
+      <def>MechanicalThoraxCanManipulate</def>
+      <customLabel>shell</customLabel>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      
+      <groups>
+        <li>HeadAttackTool</li>
+      </groups>
+
+      <parts>
+        <li>
+           <def>AutocleanerWheel</def>
+           <customLabel>front left wheel</customLabel>
+           <coverage>0.075</coverage>
+        </li>
+        <li>
+           <def>AutocleanerWheel</def>
+           <customLabel>front right wheel</customLabel>
+           <coverage>0.075</coverage>
+        </li>
+        <li>
+           <def>AutocleanerWheel</def>
+           <customLabel>front left wheel</customLabel>
+           <coverage>0.075</coverage>
+        </li>
+        <li>
+           <def>AutocleanerWheel</def>
+           <customLabel>rear right wheel</customLabel>
+           <coverage>0.075</coverage>
+        </li>
+        <li>
+          <def>Reactor</def>
+          <customLabel>core</customLabel>
+          <coverage>0.025</coverage>
+          <depth>Inside</depth>
+        </li>
+        <li>
+          <def>FluidReprocessor</def>
+          <coverage>0.025</coverage>
+          <depth>Inside</depth>
+        </li>
+        <li>
+          <def>FluidReprocessor</def>
+          <coverage>0.025</coverage>
+          <depth>Inside</depth>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+  
+</Defs>

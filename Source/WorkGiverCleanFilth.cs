@@ -48,7 +48,8 @@ namespace Autocleaner
         public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
             Filth filth = t as Filth;
-            return filth != null && filth.Map.areaManager.Home[filth.Position] && pawn.CanReserve(t, 1, -1, null, forced) && filth.TicksSinceThickened >= MinTicksSinceThickened;
+
+            return filth != null && filth.Map != null && filth.Position.InAllowedArea(pawn) && filth.Map.areaManager.Home[filth.Position] && pawn.CanReserve(t, 1, -1, null, forced) && filth.TicksSinceThickened >= MinTicksSinceThickened;
         }
 
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
