@@ -18,4 +18,7 @@
   
   <AutocleanerLQPathingName>Low quality pathing</AutocleanerLQPathingName>
   <AutocleanerLQPathingDesc>Will require less processing power to find charging spot, but also produce worse results: autocleaner will choose to charge at location that is far away from where it is.</AutocleanerLQPathingDesc>
+
+  <AutocleanerDisableScheduleName>Disable area assignment</AutocleanerDisableScheduleName>
+  <AutocleanerDisableScheduleDesc>Prevents autocleaners from appearing in "Schedule" tab, for mod compatibility.</AutocleanerDisableScheduleDesc>
 </LanguageData>

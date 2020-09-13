@@ -131,9 +131,9 @@
       <soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
     </race>
     <butcherProducts>
-      <Steel>50</Steel>
-      <Plasteel>10</Plasteel>
-      <ComponentIndustrial>2</ComponentIndustrial>
+      <Steel>25</Steel>
+      <Plasteel>5</Plasteel>
+      <ComponentIndustrial>1</ComponentIndustrial>
     </butcherProducts>
     <repairEffect>Repair</repairEffect>
     <charger>AutocleanerCharger</charger>
@@ -143,7 +143,7 @@
     <defName>AutocleanerPawnKind</defName>
     <label>autocleaner</label>
     <race>Autocleaner</race>
-    <combatPower>0</combatPower>
+    <combatPower>1</combatPower>
     <defaultFactionType>PlayerColony</defaultFactionType>
     <lifeStages>
       <li>
@@ -215,15 +215,14 @@
     </statBases>
     
     <costList>
-      <ComponentSpacer>1</ComponentSpacer>
-      <ComponentIndustrial>4</ComponentIndustrial>
-      <Steel>20</Steel>
-      <Plasteel>75</Plasteel>
+      <Steel>50</Steel>
+      <Plasteel>10</Plasteel>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     
     <recipeMaker>
       <unfinishedThingDef>AutocleanerUnfinished</unfinishedThingDef>
-      <researchPrerequisite>AdvancedFabrication</researchPrerequisite>
+      <researchPrerequisite>Fabrication</researchPrerequisite>
       <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
       <skillRequirements>
         <Crafting>12</Crafting>

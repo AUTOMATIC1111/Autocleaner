@@ -11,10 +11,12 @@ namespace Autocleaner
     public class AutocleanerSettings : ModSettings
     {
         public bool lowQualityPathing = false;
+        public bool disableSchedule = false;
 
         override public void ExposeData()
         {
             Scribe_Values.Look(ref lowQualityPathing, "lowQualityPathing", false);
+            Scribe_Values.Look(ref disableSchedule, "disableSchedule", false);
         }
 
         public void DoSettingsWindowContents(Rect inRect)
@@ -22,6 +24,7 @@ namespace Autocleaner
             Listing_Standard listing_Standard = new Listing_Standard();
             listing_Standard.Begin(inRect);
             listing_Standard.CheckboxLabeled("AutocleanerLQPathingName".Translate(), ref lowQualityPathing, "AutocleanerLQPathingDesc".Translate());
+            listing_Standard.CheckboxLabeled("AutocleanerDisableScheduleName".Translate(), ref disableSchedule, "AutocleanerDisableScheduleDesc".Translate());
             listing_Standard.End();
         }
     }
