@@ -26,7 +26,7 @@ namespace Autocleaner
             return 140f;
         }
 
-        public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth)
+        public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
         {
             Rect overRect = new Rect(topLeft.x, topLeft.y, GetWidth(maxWidth), 75f);
             Find.WindowStack.ImmediateWindow(ID, overRect, WindowLayer.GameUI, delegate

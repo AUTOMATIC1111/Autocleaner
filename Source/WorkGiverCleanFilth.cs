@@ -62,7 +62,7 @@ namespace Autocleaner
             for (int i = 0; i < 100; i++)
             {
                 IntVec3 intVec = t.Position + GenRadial.RadialPattern[i];
-                if (intVec.InBounds(map) && intVec.GetRoom(map, RegionType.Set_Passable) == room)
+                if (intVec.InBounds(map) && RegionAndRoomQuery.RoomAt(intVec, map, RegionType.Set_Passable) == room)
                 {
                     List<Thing> thingList = intVec.GetThingList(map);
                     for (int j = 0; j < thingList.Count; j++)

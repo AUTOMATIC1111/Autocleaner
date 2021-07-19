@@ -9,6 +9,9 @@ using Verse;
 
 namespace Autocleaner.Patch
 {
+    /// <summary>
+    /// patches the pawn list in the Schedule UI to include autocleaners
+    /// </summary>
     [HarmonyPatch(typeof(MainTabWindow_PawnTable), "Pawns", MethodType.Getter)]
     class PatchMainTabWindow_PawnTablePawns
     {
@@ -24,7 +27,7 @@ namespace Autocleaner.Patch
                 yield break;
             }
 
-            if (!(__instance is MainTabWindow_Restrict))
+            if (!(__instance is MainTabWindow_Schedule))
             {
                 yield break;
             }

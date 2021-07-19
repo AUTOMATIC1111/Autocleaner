@@ -36,10 +36,12 @@ namespace Autocleaner
             return comp.PowerNet.HasActivePowerSource;
         }
 
+        static TraverseParms traverseParams = TraverseParms.For(TraverseMode.NoPassClosedDoors);
+
         IntVec3 FindSuitablePosition(Pawn pawn, Map map, IntVec3 pos)
         {
             IntVec3 target = IntVec3.Invalid;
-            PathGrid pathGrid = map.pathGrid;
+            PathGrid pathGrid = map.pathing.For(traverseParams).pathGrid;
             CellIndices cellIndices = map.cellIndices;
             Predicate<IntVec3> passCheck = delegate (IntVec3 c)
             {

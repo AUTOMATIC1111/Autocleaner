@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <WorkGiverDef>
+    <defName>AutocleanerCleanFilth</defName>
+    <label>clean filth</label>
+    <giverClass>Autocleaner.WorkGiverCleanFilth</giverClass>
+    <workType>Cleaning</workType>
+    <verb>clean</verb>
+    <gerund>cleaning</gerund>
+    <priorityInType>5</priorityInType>
+  </WorkGiverDef>
+  
+  <JobDef Class="Autocleaner.AutocleanerJobDef">
+    <defName>AutocleanerClean</defName>
+    <driverClass>Autocleaner.JobDriverCleanFilth</driverClass>
+    <reportString>cleaning TargetA.</reportString>
+    <activeDischargePerSecond>1</activeDischargePerSecond>
+  </JobDef>
+  
+  <JobDef Class="Autocleaner.AutocleanerJobDef">
+    <defName>AutocleanerGoto</defName>
+    <driverClass>Autocleaner.JobDriverGoto</driverClass>
+    <reportString>going to rest.</reportString>
+    <waitAfterArriving>0</waitAfterArriving>
+  </JobDef>
+
+  <JobDef Class="Autocleaner.AutocleanerJobDef">
+    <defName>AutocleanerCharge</defName>
+    <driverClass>Autocleaner.JobDriverCharge</driverClass>
+    <reportString>charging.</reportString>
+    <activeDischargePerSecond>-2</activeDischargePerSecond>
+  </JobDef>
+  
+  <JobDef Class="Autocleaner.AutocleanerJobDef">
+    <defName>AutocleanerWaitForRepair</defName>
+    <driverClass>Autocleaner.JobDriverWaitForRepair</driverClass>
+    <reportString>waiting for repair.</reportString>
+  </JobDef>
+
+  <WorkGiverDef>
+    <defName>AutocleanerRepairWorkGiver</defName>
+    <label>repair autocleaner</label>
+    <giverClass>Autocleaner.WorkGiverRepairAutocleaner</giverClass>
+    <workType>Construction</workType>
+    <priorityInType>35</priorityInType>
+    <verb>repair</verb>
+    <gerund>repairing</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <nonColonistsCanDo>true</nonColonistsCanDo>
+  </WorkGiverDef>
+
+  <JobDef Class="Autocleaner.AutocleanerJobDef">
+    <defName>AutocleanerRepair</defName>
+    <driverClass>Autocleaner.JobDriverRepairAutocleaner</driverClass>
+    <reportString>repairing autocleaner.</reportString>
+  </JobDef>
+
+</Defs>

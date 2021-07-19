@@ -9,6 +9,9 @@ using Verse;
 
 namespace Autocleaner.Patch
 {
+    /// <summary>
+    /// makes it possible to configure autoclears to flee from threats
+    /// </summary>
     [HarmonyPatch(typeof(Pawn_PlayerSettings), "UsesConfigurableHostilityResponse", MethodType.Getter)]
     class PatchPawn_PlayerSettings
     {
