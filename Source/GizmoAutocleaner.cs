@@ -16,10 +16,7 @@ namespace Autocleaner
 
         public PawnAutocleaner cleaner;
 
-        public GizmoAutocleaner()
-        {
-            order = -200f;
-        }
+        public override float Order { get; set; } = 200f;
 
         public override float GetWidth(float maxWidth)
         {
