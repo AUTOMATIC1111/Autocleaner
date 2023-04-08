@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <AutocleanerTitle>Автоуборщик</AutocleanerTitle>
+
+  <AutocleanerActivate>Активировать</AutocleanerActivate>
+  <AutocleanerActivateDesc>Запустите автоуборщик и сделайте так, чтобы он автоматически очищал области, в которых есть питание.</AutocleanerActivateDesc>
+  <AutocleanerDeactivate>Деактивировать</AutocleanerDeactivate>
+  <AutocleanerDeactivateDesc>Остановите автоуборщик и превратите его в переносимый предмет.</AutocleanerDeactivateDesc>
+
+  <AutocleanerPause>Пауза</AutocleanerPause>
+  <AutocleanerPauseDesc>Прекрать очистку и оставаться на месте.</AutocleanerPauseDesc>
+  <AutocleanerResume>Возобновить</AutocleanerResume>
+  <AutocleanerResumeDesc>Возобновите уборку.</AutocleanerResumeDesc>
+
+  <AutocleanerCharge>Зарядка: </AutocleanerCharge>
+
+  <AutocleanerNotStationary>не стационарный</AutocleanerNotStationary>
+
+  <AutocleanerLQPathingName>Некачественное прокладывание пути</AutocleanerLQPathingName>
+  <AutocleanerLQPathingDesc>Потребуется меньше вычислительной мощности, чтобы найти место зарядки, но также даст худшие результаты: автоуборщик выберет для зарядки место, которое находится далеко от того места, где он сейчас.</AutocleanerLQPathingDesc>
+
+  <AutocleanerDisableScheduleName>Отключить назначение области</AutocleanerDisableScheduleName>
+  <AutocleanerDisableScheduleDesc>Предотвращает отображение автоочистителей на вкладке "Расписание" для совместимости с модами.</AutocleanerDisableScheduleDesc>
+
+</LanguageData>

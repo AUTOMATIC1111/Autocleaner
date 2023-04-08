@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Autocleaner.label>автоуборщик</Autocleaner.label>
+  <Autocleaner.description>Автономный робот-пылесос.</Autocleaner.description>
+  <Autocleaner.tools.0.label>оболочка</Autocleaner.tools.0.label>
+  <!-- No Leather: Butcher Products -->
+  <!-- Meat Amount: 0 -->
+  <Autocleaner_Corpse.label>труп автоуборщика</Autocleaner_Corpse.label>
+  <Autocleaner_Corpse.description>разрушенный автоуборщик</Autocleaner_Corpse.description>
+
+  <AutocleanerUnfinished.label>незаконченный автоуборщик</AutocleanerUnfinished.label>
+  <AutocleanerUnfinished.description>Незаконченный автоуборщик.</AutocleanerUnfinished.description>
+
+  <AutocleanerItem.label>автоуборщик</AutocleanerItem.label>
+  <AutocleanerItem.description>Автономный робот-пылесос. Убирает территорию дома без участия человека, может заряжаться от любой точки вблизи электросети. В случае повреждения прекращает уборку до ремонта, для которого требуются компоненты.</AutocleanerItem.description>
+
+
+</LanguageData>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <AutocleanerClean.reportString>очистка TargetA.</AutocleanerClean.reportString>
+  <AutocleanerGoto.reportString>идет отдыхать.</AutocleanerGoto.reportString>
+  <AutocleanerCharge.reportString>зарядка.</AutocleanerCharge.reportString>
+  <AutocleanerWaitForRepair.reportString>в ожидании ремонта.</AutocleanerWaitForRepair.reportString>
+  <AutocleanerRepair.reportString>ремонт автоуборщика.</AutocleanerRepair.reportString>
+
+
+</LanguageData>

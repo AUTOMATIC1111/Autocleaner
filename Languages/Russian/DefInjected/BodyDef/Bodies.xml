@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Autocleaner.label>автоуборщик</Autocleaner.label>
+  <Autocleaner.corePart.parts.0.customLabel>переднее левое колесо</Autocleaner.corePart.parts.0.customLabel>
+  <Autocleaner.corePart.parts.1.customLabel>переднее правое колесо</Autocleaner.corePart.parts.1.customLabel>
+  <Autocleaner.corePart.parts.2.customLabel>заднее левое колесо</Autocleaner.corePart.parts.2.customLabel>
+  <Autocleaner.corePart.parts.3.customLabel>заднее правое колесо</Autocleaner.corePart.parts.3.customLabel>
+  <Autocleaner.corePart.parts.4.customLabel>ядро</Autocleaner.corePart.parts.4.customLabel>
+  <Autocleaner.corePart.customLabel>оболочка</Autocleaner.corePart.customLabel>
+
+
+</LanguageData>
