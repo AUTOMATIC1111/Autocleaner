@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <AutocleanerCleanFilth.label>чистка грязи</AutocleanerCleanFilth.label>
+  <AutocleanerCleanFilth.verb>чистить</AutocleanerCleanFilth.verb>
+  <AutocleanerCleanFilth.gerund>чистка</AutocleanerCleanFilth.gerund>
+
+  <AutocleanerRepairWorkGiver.label>ремонт автоуборщика</AutocleanerRepairWorkGiver.label>
+  <AutocleanerRepairWorkGiver.verb>ремонт</AutocleanerRepairWorkGiver.verb>
+  <AutocleanerRepairWorkGiver.gerund>ремонтировать</AutocleanerRepairWorkGiver.gerund>
+
+
+</LanguageData>
