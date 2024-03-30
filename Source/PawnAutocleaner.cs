@@ -152,9 +152,10 @@ namespace Autocleaner
             return stringBuilder.ToString();
         }
 
-        public override void Draw()
+
+        protected override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
-            base.Draw();
+            base.DrawAt(drawLoc, flip);
 
             OverlayTypes overlay = OverlayTypes.Forbidden;
 

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef>
+    <defName>AutocleanerCharger</defName>
+    <thingClass>Building</thingClass>
+    <label>autocleaner charger</label>
+    <description>A device autocleaner uses to charge from power network.</description>
+    <category>Mote</category>
+    <selectable>false</selectable>
+    <altitudeLayer>Conduits</altitudeLayer>
+    <passability>Standable</passability>
+    <tickerType>Normal</tickerType>
+    <useHitPoints>false</useHitPoints>
+    <isSaveable>false</isSaveable>
+    <rotatable>false</rotatable>
+    <drawerType>None</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+
+    <building>
+        <expandHomeArea>false</expandHomeArea>
+        <isInert>true</isInert>
+        <deconstructible>false</deconstructible>
+        <claimable>false</claimable>
+    </building>
+
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>50</basePowerConsumption>
+        <soundPowerOff>AutocleanerNoSound</soundPowerOff>
+        <soundPowerOn>AutocleanerNoSound</soundPowerOn>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef Name="BaseBaseAutocleaner" Abstract="True">
+    <thingClass>Pawn</thingClass>
+    <category>Pawn</category>
+    <selectable>true</selectable>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Pawn</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <hasTooltip>true</hasTooltip>
+    <statBases>
+      <Mass>60</Mass>
+      <Flammability>0.7</Flammability>
+    </statBases>
+    <inspectorTabs>
+      <li>ITab_Pawn_Health</li>
+      <li>ITab_Pawn_Log</li>
+    </inspectorTabs>
+    <comps>
+      <li>
+        <compClass>CompAttachBase</compClass>
+      </li>
+    </comps>
+    <drawGUIOverlay>true</drawGUIOverlay>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BaseBaseAutocleaner" Name="BaseAutocleaner" Abstract="True">
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <statBases>
+      <PsychicSensitivity>0.5</PsychicSensitivity>
+      <Flammability>0</Flammability>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>250</ComfyTemperatureMax>
+      <MeatAmount>0</MeatAmount>
+      <ArmorRating_Heat>2.00</ArmorRating_Heat>
+    </statBases>
+    <receivesSignals>true</receivesSignals>
+    <race>
+      <fleshType>AutocleanerMechanoid</fleshType>
+      <needsRest>false</needsRest>
+      <hasGenders>false</hasGenders>
+      <foodType>None</foodType>
+      <lifeExpectancy>2500</lifeExpectancy>
+      <bloodDef>Filth_MachineBits</bloodDef>
+    </race>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BaseAutocleaner" Class="Autocleaner.AutocleanerDef">
+    <defName>Autocleaner</defName>
+    <thingClass>Autocleaner.PawnAutocleaner</thingClass>
+    <label>autocleaner</label>
+    <description>Autonomous robotic vacuum cleaner.</description>
+    <statBases>
+      <MoveSpeed>4</MoveSpeed>
+      <Mass>60</Mass>
+      <PsychicSensitivity>0.5</PsychicSensitivity>
+      <Flammability>0</Flammability>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>250</ComfyTemperatureMax>
+      <MeatAmount>0</MeatAmount>
+      <ArmorRating_Heat>2.00</ArmorRating_Heat>
+    </statBases>
+   
+    <tools>
+      <li>
+        <label>shell</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>1</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+
+    <race>
+      <intelligence>ToolUser</intelligence>
+      <thinkTreeMain>Autocleaner</thinkTreeMain>
+      <thinkTreeConstant>AutocleanerConstant</thinkTreeConstant>
+      <body>Autocleaner</body>
+      <renderTree>Misc</renderTree>
+      <baseBodySize>0.75</baseBodySize>
+      <baseHealthScale>1.0</baseHealthScale>
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
+        </li>
+      </lifeStageAges>
+      <soundCallIntervalRange>10~20</soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_MechanoidBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
+    </race>
+    <butcherProducts>
+      <Steel>25</Steel>
+      <Plasteel>5</Plasteel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </butcherProducts>
+    <repairEffect>Repair</repairEffect>
+    <charger>AutocleanerCharger</charger>
+  </ThingDef>
+
+  <PawnKindDef>
+    <defName>AutocleanerPawnKind</defName>
+    <label>autocleaner</label>
+    <race>Autocleaner</race>
+    <combatPower>1</combatPower>
+    <defaultFactionType>PlayerColony</defaultFactionType>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Autocleaner/Autocleaner</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>1</drawSize>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+
+  <ThingDef Name="AutocleanerResourceBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <useHitPoints>true</useHitPoints>
+    <selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+    <stackLimit>75</stackLimit>
+    <statBases>
+      <Beauty>-4</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>
+    <alwaysHaulable>true</alwaysHaulable>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <rotatable>false</rotatable>
+    <pathCost>15</pathCost>
+  </ThingDef>
+  
+  <ThingDef ParentName="UnfinishedBase">
+    <defName>AutocleanerUnfinished</defName>
+    <label>unfinished autocleaner</label>
+    <description>An unfinished autocleaner.</description>
+    <statBases>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <graphicData>
+      <texPath>Autocleaner/UnfinishedAutocleaner</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stuffCategories Inherit="false" />
+  </ThingDef>
+  
+  <ThingDef ParentName="AutocleanerResourceBase">
+    <defName>AutocleanerItem</defName>
+    <label>autocleaner</label>
+    <description>Autonomous robotic vacuum cleaner. Will clean home area without human intervention, and can charge from anywhere near a power grid. If damaged, stops cleaning until repaired, which requires components.</description>
+    <graphicData>
+      <texPath>Autocleaner/AutocleanerItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconPath>Autocleaner/Autocleaner_east</uiIconPath>
+
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <stackLimit>1</stackLimit>
+    <useHitPoints>true</useHitPoints>
+    
+    <statBases>
+      <WorkToMake>29950</WorkToMake>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>2</Mass>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    
+    <costList>
+      <Steel>50</Steel>
+      <Plasteel>10</Plasteel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    
+    <recipeMaker>
+      <unfinishedThingDef>AutocleanerUnfinished</unfinishedThingDef>
+      <researchPrerequisite>Fabrication</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+
+    <thingCategories>
+      <li>Items</li>
+    </thingCategories>
+    
+    <techLevel>Industrial</techLevel>
+    
+    <comps>
+      <li>
+        <compClass>Autocleaner.CompStoreAutocleaner</compClass>
+      </li>
+    </comps>
+    <tradeTags><li>ExoticMisc</li></tradeTags>
+    <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+  </ThingDef>
+
+</Defs>
