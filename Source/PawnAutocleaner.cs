@@ -19,6 +19,7 @@ namespace Autocleaner
 
         public bool active = true;
         public float charge;
+        public IntVec3 lastCornerSpot = IntVec3.Invalid;
 
         public bool Broken => health.hediffSet.hediffs.Count( x => x.def.isBad ) > 0;
         public bool LowPower => charge < AutoDef.charge * lowLower;

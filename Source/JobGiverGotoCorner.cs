@@ -85,11 +85,14 @@ namespace Autocleaner
 
             Map map = pawn.Map;
             if (map == null) return null;
+            if (pawn.Position == cleaner.lastCornerSpot && SuitablePosition(pawn.Position, map, true)) return null;
             if (SuitablePosition(pawn.Position, map)) return null;
 
             IntVec3 target = Autocleaner.settings.lowQualityPathing ? FindSuitablePositionRandom(pawn, map, pawn.Position) : FindSuitablePosition(pawn, map, pawn.Position);
             if (target != IntVec3.Invalid)
             {
+                cleaner.lastCornerSpot = target;
+				
                 Job job = JobMaker.MakeJob(Globals.AutocleanerGoto, target);
                 return job;
             }
